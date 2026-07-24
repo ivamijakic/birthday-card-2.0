@@ -1,0 +1,197 @@
+:root {
+  --card-width: clamp(260px, 35vw, 520px);
+  --card-height: calc(var(--card-width) * 1.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #7c6480;
+  padding: 20px;
+}
+
+
+.birthdayCard {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform: perspective(2500px);
+  transition: transform 1s;
+}
+
+
+.cardFront {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  overflow: hidden;
+  transform-origin: left;
+  box-shadow:
+    inset 100px 20px 100px rgba(0,0,0,.2),
+    30px 0 50px rgba(0,0,0,.4);
+  transition: .6s;
+}
+
+.cardInside {
+
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:
+    inset 100px 20px 100px rgba(0,0,0,.2);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
+
+
+p {
+
+  margin: 20px 30px;
+  font-family: "Gelasio", serif;
+  font-size: clamp(12px, 1.5vw, 20px);
+  line-height: 1.5;
+  color: #333;
+  text-align: left;
+}
+
+
+h3 {
+  margin: 40px 10px 0;
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(20px, 4vw, 45px);
+  color: #333;
+  text-align: center;
+}
+
+
+
+.name {
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translateX(-50%);
+  color: #333;
+  font-family: "Galesio", serif;
+}
+
+
+.back {
+  margin: 30px;
+  color: #333;
+  text-align: center;
+  font-family: Tahoma, sans-serif;
+  outline: 2px dotted #333;
+
+}
+
+
+.birthdayCard:hover {
+  transform:
+    perspective(2500px)
+    rotate(5deg);
+}
+
+.birthdayCard:hover .cardFront {
+  transform: rotateY(-160deg);
+}
+
+.birthdayCard:hover .image {
+  visibility: hidden;
+}
+
+.button {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  background:
+    linear-gradient(135deg,#c39bd3,#7d5285);
+  color: white;
+  text-decoration: none;
+  font-family: Tahoma, sans-serif;
+  font-size: clamp(12px,1.5vw,17px);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.25),
+    inset 0 1px 2px rgba(255,255,255,.4);
+  transition: .3s ease;
+}
+
+
+.button:hover {
+
+  transform:
+    translateX(-50%)
+    translateY(-5px);
+
+
+  box-shadow:
+    0 15px 30px rgba(0,0,0,.35),
+    0 0 20px rgba(176,140,182,.6);
+}
+
+
+.button:active {
+  transform:
+    translateX(-50%)
+    scale(.95);
+}
+
+
+
+/* MOBITEL */
+
+@media(max-width:600px){
+
+  :root {
+    --card-width: min(90vw,340px);
+    --card-height: calc(var(--card-width)*1.4);
+  }
+
+
+  p {
+    font-size:15px;
+  }
+
+
+  h3 {
+    font-size:30px;
+  }
+
+
+  .button {
+    bottom:25px;
+    padding:10px 22px;
+  }
+
+  .name {
+  left: 50%;
+  top: 63%;
+}
+
+}
